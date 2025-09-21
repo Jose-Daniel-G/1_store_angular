@@ -12,7 +12,9 @@ import { MonedaPenPipe } from '../../../core/pipes/moneda-pen.pipe';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
-
+  ngAfterViewInit(): void {
+    ($('[data-widget="treeview"]') as any).Treeview('init');// inicializar plugins de AdminLTE
+  }
   filtroForm: FormGroup;
   idUsuario = 1; // Se obtiene del login
   idPerfil = 1; // Se obtiene del login
