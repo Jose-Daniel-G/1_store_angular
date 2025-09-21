@@ -33,7 +33,12 @@ ng build --configuration production
 ng generate module app-routing --flat --module=app
 ng generate component modules/home --skip-tests 
 
-#### Frontend-Store  
+#### Frontend-Store ADD Adminlte
+```
+npm install admin-lte bootstrap @fortawesome/fontawesome-free
+npm install jquery --save
+npm install --save-dev @types/jquery
+```
 ###### Deploy Angular en GitHub Pages
 
 1. **Revisar el `angular.json`**  
