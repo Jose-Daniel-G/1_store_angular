@@ -31,3 +31,46 @@ ng g component components/user --standalone
 ng build --configuration production
 ng generate module app-routing --flat --module=app
 ng generate component modules/home --skip-tests 
+
+#### Frontend-Store  
+###### Deploy Angular en GitHub Pages
+
+1. **Revisar el `angular.json`**  
+   - Ir a:  
+     ```json
+     "projects": { "frontend-store": {
+     ```
+   - Ese es el **nombre de tu proyecto**.  
+   - En la sección `build > options`, agrega (debajo de `outputPath`):  
+     ```json
+     "baseHref": "/frontend-store/"
+     ```
+---
+
+2. **Instalar la herramienta de despliegue (si no está instalada)**  
+   ```bash
+   npm install -g @angular/cli
+   ng add angular-cli-ghpages
+   ng build --configuration production --base-href "/store_angular/"
+   ng deploy --base-href=https://jose-daniel-g.github.io/store_angular/
+   ```
+   - De lo contrario si ya esta en angular.json configurado
+   ```bash
+   ng build --configuration production 
+   ng deploy
+
+   ```
+   *Configurar GitHub Pages en GitHub*
+
+   **Ir a tu repo en GitHub → Settings > Pages.**
+
+   - Seleccionar:
+
+   - Branch: gh-pages
+
+   - Folder: / (root)
+
+   - Guardar. 
+  ```
+npm install bootstrap jquery jquery-ui-dist slick-carousel line-awesome jquery-nice-select
+```

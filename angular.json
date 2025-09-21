@@ -30,9 +30,18 @@
             ],
             "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/jquery-ui-dist/jquery-ui.min.css",
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/line-awesome/dist/line-awesome/css/line-awesome.min.css",
+              "node_modules/jquery-nice-select/css/nice-select.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery-ui-dist/jquery-ui.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js",
+              "node_modules/jquery-nice-select/js/jquery.nice-select.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,6 +101,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
