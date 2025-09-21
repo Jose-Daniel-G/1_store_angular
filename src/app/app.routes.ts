@@ -18,7 +18,13 @@ export const routes: Routes = [
         loadComponent: () => import('./modules/auth-profile/register/register.component').then(c => c.RegisterComponent)
       }
     ]
-  }, {
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+
+  },
+  {
     path: 'procesar',
     loadChildren: () => import('./modules/procesar/procesar.module').then(m => m.ProcesarModule),
   },
