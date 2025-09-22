@@ -49,5 +49,5 @@ export const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '/login' } // 🔹 Redirige cualquier otra URL inválida a login
+  { path: '**', redirectTo: 'auth/login' } // 🔹 Redirige cualquier otra URL inválida a login
 ]

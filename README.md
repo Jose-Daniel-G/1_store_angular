@@ -60,6 +60,20 @@ npm install --save-dev @types/jquery
    ng build --configuration production --base-href "/store_angular/"
    ng deploy --base-href=https://jose-daniel-g.github.io/store_angular/
    ```
+   ---
+  "styles": [
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+    "node_modules/admin-lte/dist/css/adminlte.min.css",
+    "src/styles.css"
+  ],
+  "scripts": [
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+    "node_modules/admin-lte/dist/js/adminlte.min.js"
+  ]
+  ---
+   #### CONFIG ANGULAR.JSON
    - De lo contrario si ya esta en angular.json configurado
    ```bash
    ng build --configuration production 
