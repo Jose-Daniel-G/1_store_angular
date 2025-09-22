@@ -1,3 +1,5 @@
+`URL: `https://jose-daniel-g.github.io/1_store_angular/
+
 # 🚀 Dynamic Web Application - Laravel + Angular SPA
 
 > **Single Page Application (SPA)** con Laravel como API backend y Angular como frontend dinámico

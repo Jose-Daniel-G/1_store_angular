@@ -1,4 +1,4 @@
-`URL: `https://jose-daniel-g.github.io/store_angular/
+`URL: `https://jose-daniel-g.github.io/1_store_angular/
 ![cellphone_store](images/cellphone_store.png)
 #### `Angular 18.2.21  TypeScript Version 5.5.4`
 
@@ -58,8 +58,8 @@ npm install --save-dev @types/jquery
    ```bash
    npm install -g @angular/cli
    ng add angular-cli-ghpages
-   ng build --configuration production --base-href "/store_angular/"
-   ng deploy --base-href=https://jose-daniel-g.github.io/store_angular/
+   ng build --configuration production --base-href "/1_store_angular/"
+   ng deploy --base-href="/1_store_angular/"
    ```
    ---
   "styles": [

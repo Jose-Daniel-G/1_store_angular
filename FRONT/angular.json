@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/multimedia",
-            "baseHref": "/store_angular/",
+            "baseHref": "/1_store_angular/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -38,7 +38,9 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/jquery-nice-select/css/nice-select.css",
               "node_modules/admin-lte/dist/css/adminlte.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/style.css",
+              "src/assets/css/responsive.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -54,13 +56,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
                 }
               ],
               "outputHashing": "all"
