@@ -1,5 +1,5 @@
-(initiPageEcommerce($))(jQuery);
-function initiPageEcommerce($) {
+(initPageEcommerce($))(jQuery);
+function initPageEcommerce($) {
     "use strict";
 
     // hide perloader
