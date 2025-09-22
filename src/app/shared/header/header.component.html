@@ -10,11 +10,11 @@
 
                 <ul class="nav_bar flex-grow-1">
                     <li class="withsubs">
-                        <a href="index-1.html">Home <span><i class="las la-angle-down"></i></span></a>
+                        <a routerLink="landing">Home <span><i class="las la-angle-down"></i></span></a>
                         <ul class="subnav">
-                            <li><a href="index-1.html">Home page 1 </a></li>
-                            <li><a href="index-2.html">Home page 2</a></li>
-                            <li><a href="index-3.html">Home page 3</a></li>
+                            <li><a routerLink="landing">Home page 1 </a></li>
+                            <!-- <li><a href="index-2.html">Home page 2</a></li>
+                            <li><a href="index-3.html">Home page 3</a></li> -->
                         </ul>
                     </li>
                     <li class="withsubs">
@@ -45,9 +45,9 @@
                             <div class="single_subnav">
                                 <h5 class="text_lg ps-3 mb-2">Account pages</h5>
                                 <ul>
-                                    <li><a href="account.html">My Account</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    <li><a hrouterLink="/dashboard">My Account</a></li>
+                                    <li><a hrouterLink="auth/login">Login</a></li>
+                                    <li><a routerLink="auth/register">Register</a></li>
                                     <li><a href="forgot-password.html">Forgot password</a></li>
                                 </ul>
                             </div>
@@ -443,7 +443,7 @@
                 <div class="header_icon d-flex align-items-center">
                     <a href="wish-list.html" class="icon_wrp text-center wishlist ms-0">
                         <span class="icon">
-                            <i class="icon-heart"></i>
+                            <i class="fa-regular fa-heart"></i>
                         </span>
                         <span class="icon_text">Wish List</span>
                         <span class="pops">6</span>
@@ -451,7 +451,7 @@
                     <div class="shopcart">
                         <a href="shopping-cart.html" class="icon_wrp text-center d-none d-lg-block">
                             <span class="icon">
-                                <i class="icon-cart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
                             </span>
                             <span class="icon_text">Cart</span>
                             <span class="pops">8</span>
@@ -499,7 +499,7 @@
                     <div class="position-relative myacwrap">
                         <a href="javascript:void(0)" class="icon_wrp text-center myacc">
                             <span class="icon">
-                               <i class="icon-user-line"></i>
+                               <i class="fa-regular fa-user"></i>
                             </span>
                             <span class="icon_text">Account</span>
                         </a>
@@ -507,12 +507,12 @@
                             <div class="ac_join">
                                 <p>Welcome to RAFCART Shop</p>
                                 <div class="account_btn d-flex justify-content-between">
-                                   <a href="register.html" class="default_btn">Join</a>
+                                   <a routerLink="/auth/register" class="default_btn">Join</a>
                                    <a routerLink="/auth/login" class="default_btn second">Login</a>
                                 </div>
                             </div>
                             <div class="ac_links">
-                                  <a href="account.html" class="myac">
+                                  <a routerLink="/dashboard" class="myac">
                                     <i class="lar la-id-card"></i>
                                     My Account
                                 </a>
@@ -587,9 +587,9 @@
                         Home
                     </a>
                     <div class="submn">
-                        <a href="index-1.html">Home 1</a>
-                        <a href="index-2.html">Home 2</a>
-                        <a href="index-3.html">Home 3</a>
+                        <a routerLink="landing">Home 1</a>
+                        <!-- <a href="index-2.html">Home 2</a>
+                        <a href="index-3.html">Home 3</a> -->
                     </div>
                 </li>
 
@@ -611,10 +611,10 @@
                         My Account
                     </a>
                     <div class="submn">
-                        <a href="account.html">My account</a>
-                        <a href="login.html">Login</a>
-                        <a href="register.html">Register</a>
-                        <a href="forgot-password.html">Forgot password</a>
+                        <a routerLink="/dashboard">My account</a>
+                        <a routerLink="/auth/login" >Login</a>
+                        <a routerLink="/auth/register" >Register</a>
+                        <!-- <a href="forgot-password.html">Forgot password</a> -->
                     </div>
                 </li>
                 <li class="withsub">

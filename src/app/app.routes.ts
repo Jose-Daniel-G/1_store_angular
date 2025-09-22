@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'landing', pathMatch: 'full' }, // 🔹 Asegura que inicie en login
   {
-    path: '',
+    path: 'landing',
     loadComponent: () => import('./modules/home/home.component').then(c => c.HomeComponent)
   },
   {
@@ -49,5 +50,5 @@ export const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: 'auth/login' } // 🔹 Redirige cualquier otra URL inválida a login
+  { path: '**', redirectTo: 'landing' } // 🔹 Redirige cualquier otra URL inválida a login
 ]
