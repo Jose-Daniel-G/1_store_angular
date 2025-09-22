@@ -58,8 +58,8 @@ npm install --save-dev @types/jquery
    ```bash
    npm install -g @angular/cli
    ng add angular-cli-ghpages
-   ng build --configuration production --base-href "/store_angular/"
-   ng deploy --base-href=https://jose-daniel-g.github.io/store_angular/
+   ng build --configuration production --base-href "/1_store_angular/"
+   ng deploy --base-href="/1_store_angular/"
    ```
    ---
   "styles": [
