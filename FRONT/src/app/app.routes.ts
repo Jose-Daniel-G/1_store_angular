@@ -11,16 +11,7 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadComponent: () => import('./modules/auth-profile/auth-profile.component').then(c => c.AuthProfileComponent),
-    children: [
-      {
-        path: 'login',
-        loadComponent: () => import('./modules/auth-profile/login/login.component').then(c => c.LoginComponent)
-      },
-      {
-        path: 'register',
-        loadComponent: () => import('./modules/auth-profile/register/register.component').then(c => c.RegisterComponent)
-      }
-    ]
+    loadChildren: () => import('./modules/auth-profile/auth-profile.route').then(m => m.default)
   },
   {
     path: '',

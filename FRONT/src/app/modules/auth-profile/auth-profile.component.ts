@@ -4,10 +4,11 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 import { RouterModule } from '@angular/router';
 declare var $: any;
 declare function initPageEcommerce([]): any;
+// declare function initPageEcommerce($: any): any; // Corrected function name
 @Component({
   selector: 'app-auth-profile',
   standalone: true,
-  imports: [RouterModule,HeaderComponent, FooterComponent],
+  imports: [RouterModule,HeaderComponent, FooterComponent,],
   templateUrl: './auth-profile.component.html',
   styleUrl: './auth-profile.component.css'
 })

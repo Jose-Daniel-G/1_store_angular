@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, tap, catchError, throwError } from 'rxjs'; // Asegúrate de importar todos estos operadores
 import { LoginRequest, AuthUser, UsuarioLoginResponse } from '../models/login.model'; // Asumo AuthUser para el tipo de usuario devuelto
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -13,7 +14,14 @@ export class AuthService {
   private logoutUrl = `${this.baseUrl}/logout`;
   private userUrl = `${this.baseUrl}/user`; // Endpoint para obtener los datos del usuario autenticado
 
-  constructor(private http: HttpClient) { }
+  // private currentUserSubject: BehaviorSubject<AuthUser | null>;
+  // public currentUser$: Observable<AuthUser | null>;
+
+  constructor(private http: HttpClient,private router: Router) {//, private router: Router
+    // const storedUser = this.getCurrentUser();
+    // this.currentUserSubject = new BehaviorSubject<AuthUser | null>(storedUser);
+    // this.currentUser$ = this.currentUserSubject.asObservable();
+  }
 
   /**
    * Realiza el login usando Laravel Sanctum.
@@ -55,24 +63,14 @@ export class AuthService {
    * Cierra sesión en el backend de Laravel y limpia el almacenamiento local.
    * @returns Un Observable que emite la respuesta de la petición de logout.
    */
-  logout(): Observable<any> {
-    console.log('AuthService - Initiating logout.');
-    // La petición de logout. El interceptor debe adjuntar el token aquí.
-    return this.http.post(this.logoutUrl, {}, { withCredentials: true }).pipe(
-      tap(() => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('access_token'); // ¡Limpiar también el token de acceso!
-        console.log('AuthService - Logout successful. Token and user cleared from localStorage.');
-      }),
-      catchError(error => {
-        console.error('AuthService - Error during logout:', error);
-        // Limpiar localmente incluso si el backend falla, para asegurar un estado limpio en el frontend
-        localStorage.removeItem('user');
-        localStorage.removeItem('access_token');
-        return throwError(() => error);
-      })
-    );
+  logout() { 
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+    // this.router.navigate(['/auth/login']);
+
+    this.router.navigate(['/auth/login'], { queryParams: {}, });
   }
+
 
   /**
    * Guarda los datos del usuario autenticado en localStorage.
@@ -81,6 +79,7 @@ export class AuthService {
   setCurrentUser(user: AuthUser, roles: string[] = []): void {
     const userWithRoles = { ...user, roles }; // añadimos roles al objeto usuario
     localStorage.setItem('user', JSON.stringify(userWithRoles));
+    // this.currentUserSubject.next(userWithRoles);
   }
 
   /**
@@ -106,7 +105,7 @@ export class AuthService {
    * Recupera el token de acceso (Bearer Token) del localStorage.
    * Este método es crucial para que el interceptor pueda adjuntar el token a las solicitudes.
    * @returns El token de acceso como string, o null si no está presente.
-   */
+   */ 
   getToken(): string | null {
     return localStorage.getItem('access_token');
   }
@@ -119,25 +118,33 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.getCurrentUser() && !!this.getToken(); // ¡CRÍTICO! Verifica ambos.
   }
-  hasPermission(permissionToCheck: string): boolean {
+  hasPermission(permission: string): boolean {
     const user = this.getCurrentUser();
-    console.log('[AuthService] Usuario actual:', user);
+    // console.log('[AuthService] Usuario actual:', user);
 
     // Si el usuario no está logueado o no tiene la propiedad 'permissions' o está vacía,
     // entonces no tiene el permiso.
     if (!user || !user.permissions || user.permissions.length === 0) {
-      console.log(`[AuthService] hasPermission('${permissionToCheck}'): Usuario no logueado o no tiene permisos en el objeto de usuario. Resultado: false`);
+      // console.log(`[AuthService] hasPermission('${permission}'): Usuario no logueado o no tiene permisos en el objeto de usuario. Resultado: false`);
       return false;
     }
 
-    // Verifica directamente si el 'permissionToCheck' está incluido en el array 'user.permissions'.
-    const hasPerm = user.permissions.includes(permissionToCheck);
-    console.log(`[AuthService] hasPermission('${permissionToCheck}'): El permiso ${hasPerm ? 'FUE ENCONTRADO' : 'NO FUE ENCONTRADO'}. Resultado: ${hasPerm}`);
+    // Verifica directamente si el 'permission' está incluido en el array 'user.permissions'.
+    const hasPerm = user.permissions.includes(permission);
+    // console.log(`[AuthService] hasPermission('${permission}'): El permiso ${hasPerm ? 'FUE ENCONTRADO' : 'NO FUE ENCONTRADO'}. Resultado: ${hasPerm}`);
     return hasPerm;
   }
   hasRole(roleToCheck: string): boolean {
     const roles = this.getUserRoles();
     return roles.includes(roleToCheck);
+  }
+    /**
+   * 🔧 Utilidad para limpiar storage
+   */
+  private clearStorage(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('access_token');
+    // this.currentUserSubject.next(null);
   }
 
 }

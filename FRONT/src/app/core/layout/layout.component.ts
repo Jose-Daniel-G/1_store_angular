@@ -42,18 +42,9 @@ export class LayoutComponent {
   }
 
   logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        // Opcional: Redirigir a la página de login después de un logout exitoso
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        console.error('Error durante el logout:', err);
         // Limpiar localStorage por seguridad
         localStorage.removeItem('user');
         localStorage.removeItem('access_token');
         this.router.navigate(['/login']);
-      }
-    });
   }
 }

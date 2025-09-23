@@ -44,25 +44,17 @@ export class LoginComponent {
       return;
     }
 
-    const credentials: LoginRequest = this.loginForm.value;
+    const credentials: LoginRequest = this.loginForm.value; 
 
-    console.log('LoginComponent: Enviando credenciales al AuthService para login.');
-
-    // Se suscribe al Observable que devuelve el AuthService.login()
     // El AuthService ya maneja el flujo completo (CSRF, POST login, guardar token, GET /api/user).
     // La respuesta 'userResponse' de este subscribe será el AuthUser devuelto por /api/user.
     this.authService.login(credentials).subscribe({
-      // ¡CORRECCIÓN AQUÍ! Cambiado el tipo de 'userResponse' de 'UsuarioLoginResponse' a 'AuthUser'.
-      next: (userResponse: AuthUser) => { 
-        // Si llegamos aquí, el login fue exitoso, el token se guardó en localStorage (en AuthService),
-        // y los datos del usuario se obtuvieron de /api/user.
-        console.log('LoginComponent: Login exitoso. Usuario autenticado:', userResponse);
-        console.log('LoginComponent: Redireccionando a /dashboard.');
+        next: (userResponse: AuthUser) => { 
+        // Si llegamos aquí, el login fue exitoso, el token se guardó en localStorage (en AuthService),  y los datos del usuario se obtuvieron de /api/user.
+        console.log('LoginComponent: Login exitoso. Usuario autenticado:', userResponse); 
         this.router.navigate(['/dashboard']); // Redirigir al dashboard
       },
       error: (err) => {
-        console.error('LoginComponent: Error en login:', err);
-
         // Intenta obtener un mensaje de error más específico del backend si lo proporciona
         if (err.error && err.error.message) {
           this.errorMessage = err.error.message; // Mensaje del servidor (ej. 'Credenciales incorrectas')
