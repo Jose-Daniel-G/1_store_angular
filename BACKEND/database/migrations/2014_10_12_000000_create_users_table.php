@@ -24,8 +24,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->integer('status')->default(true);
             $table->timestamps();
-            $table->unsignedBigInteger('organismo_id');
+            $table->unsignedBigInteger('organismo_id')->default(1);
             $table->foreign('organismo_id')->references('id')->on('organismos')->onDelete('cascade');
             
             // Campo para desactivar usuario

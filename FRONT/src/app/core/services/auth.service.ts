@@ -11,6 +11,7 @@ export class AuthService {
   private csrfUrl = `${this.baseUrl.replace('/api', '')}/sanctum/csrf-cookie`;
 
   private loginUrl = `${this.baseUrl}/login`;
+  private registerUrl = `${this.baseUrl}/register`;
   private logoutUrl = `${this.baseUrl}/logout`;
   private userUrl = `${this.baseUrl}/user`; // Endpoint para obtener los datos del usuario autenticado
 
@@ -22,7 +23,9 @@ export class AuthService {
     // this.currentUserSubject = new BehaviorSubject<AuthUser | null>(storedUser);
     // this.currentUser$ = this.currentUserSubject.asObservable();
   }
-
+  register(data: { name: string; email: string; password: string; password_confirmation: string }): Observable<any> {
+    return this.http.post<any>(this.registerUrl, data, { withCredentials: true });
+  }
   /**
    * Realiza el login usando Laravel Sanctum.
    * Flujo completo:
@@ -58,6 +61,7 @@ export class AuthService {
       })
     );
   }
+
 
   /**
    * Cierra sesión en el backend de Laravel y limpia el almacenamiento local.

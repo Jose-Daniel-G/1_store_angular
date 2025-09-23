@@ -12,9 +12,9 @@
               <div class="col-12">
                 <div class="single_billing_inp">
                   <label>Full Name <span>*</span></label>
-                  <input type="text" formControlName="fullName" placeholder="John Doe"
-                    [ngClass]="{ 'is-invalid': submitted && registerForm.controls['fullName'].errors }">
-                  <div *ngIf="submitted && registerForm.controls['fullName'].errors" class="invalid-feedback">
+                  <input type="text" formControlName="name" placeholder="John Doe"
+                    [ngClass]="{ 'is-invalid': submitted && registerForm.controls['name'].errors }">
+                  <div *ngIf="submitted && registerForm.controls['name'].errors" class="invalid-feedback">
                     Name is required (min 3 characters).
                   </div>
                 </div>
@@ -48,7 +48,7 @@
               <div class="col-12">
                 <div class="single_billing_inp">
                   <label>Confirm Password <span>*</span></label>
-                  <input type="password" formControlName="confirmPassword" placeholder="Confirm your password"
+                  <input type="password" formControlName="password_confirmation" placeholder="Confirm your password"
                     [ngClass]="{ 'is-invalid': submitted && registerForm.errors?.['mismatch'] }">
                   <div *ngIf="submitted && registerForm.errors?.['mismatch']" class="invalid-feedback">
                     Passwords do not match.
@@ -57,7 +57,7 @@
               </div>
 
               <!-- Terms -->
-              <div class="col-12 mt-2">
+              <!-- <div class="col-12 mt-2">
                 <div class="custom_check check_2 d-flex align-items-center">
                   <input type="checkbox" formControlName="acceptTerms" class="check_inp" id="save-default">
                   <label for="save-default">
@@ -68,7 +68,7 @@
                 <div *ngIf="submitted && registerForm.controls['acceptTerms'].errors" class="invalid-feedback d-block">
                   You must accept the terms.
                 </div>
-              </div>
+              </div> -->
 
               <!-- Submit -->
               <div class="col-12 mt-3">
@@ -79,7 +79,7 @@
             </div>
           </form>
 
-          <div class="dif_regway my-3">
+          <!-- <div class="dif_regway my-3">
             <span class="txt">Or signup with</span>
           </div>
 
@@ -94,7 +94,7 @@
 
           <p class="text-center mt-3 mb-0">
             Already have an account? <a routerLink="/auth/login" class="text-color">Login Now</a>
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
